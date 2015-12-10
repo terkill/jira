@@ -7,6 +7,7 @@ default['jira']['user']               = 'jira'
 default['jira']['group']              = 'jira'
 default['jira']['backup_when_update'] = false
 default['jira']['ssl']                = false
+default['jira']['use_vault']          = false
 
 # Defaults are automatically selected from version via helper functions
 default['jira']['url']      = nil

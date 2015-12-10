@@ -1,5 +1,6 @@
 settings = Jira.settings(node)
 
+include_recipe 'chef-vault' if node['jira']['use_vault']
 include_recipe 'jira::database' if settings['database']['host'] == '127.0.0.1'
 include_recipe "jira::#{node['jira']['install_type']}"
 include_recipe 'jira::configuration'

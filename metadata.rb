@@ -21,6 +21,7 @@ depends 'mysql', '~> 6.0'
 depends 'mysql_connector'
 depends 'mysql2_chef_gem'
 depends 'postgresql'
+depends 'chef-vault'
 
 supports 'centos', '>= 6.0'
 supports 'redhat', '>= 6.0'

@@ -16,9 +16,17 @@ module Jira
             end
           else
             begin
-              settings = Chef::EncryptedDataBagItem.load('jira', 'jira')[node.chef_environment]
-            rescue
+              bag =
+                  if node['jira']['use_vault']
+                      ChefVault::Item.load('jira','jira')
+                  else
+                      Chef::EncryptedDataBagItem.load('jira', 'jira')
+                  end
+              settings = bag[node.chef_environment]
+              Chef::Log.warn(settings)
+            rescue => e
               Chef::Log.info('No jira encrypted data bag found')
+              Chef::Log.warn(e)
             end
           end
         ensure
